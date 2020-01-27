@@ -1,0 +1,56 @@
+.divPrincipal{
+    float: left;
+    width: 70%;
+    height: 100px;
+}
+
+.headerPrincipal{
+    width: 100%;
+    height: 100%;
+    background-color: bisque;
+}
+
+.navegadorPrincipal{
+    width: 30%;
+    height: 100px;
+    background-color: brown;
+    float: left;
+}
+
+.seccion{
+    width: 70%;
+    height: 300px;
+    background-color: chocolate;
+    float: left;
+}
+
+.articulo{
+    width: 30%;
+    height: 300px;
+    background-color: darkgoldenrod;
+    float: left;
+}
+.figura{
+    float: left;
+    width: 40%;
+    height: 150px;
+    background-color: darkgreen;
+}
+
+.figura2{
+    float: left;
+    width: 30%;
+    height: 150px;
+    background-color: darkseagreen;
+}
+
+.figura3{
+    background-color: firebrick;
+}
+
+.pie{
+    background-color: yellow;
+    width: 100%;
+    height: 90px;
+    float: left;
+}
