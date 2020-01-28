@@ -1,77 +1,328 @@
-.divPrincipal{
-    float: left;
-    width: 70%;
-    height: 100px;
+@media screen and (max-width: 600px)
+{
+    .divPrincipal{
+        float: left;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .headerPrincipal{
+        width: 100%;
+        height: 100%;
+        background-color: bisque;
+    }
+
+    .navegadorPrincipal{
+        width: 100%;
+        height: 100px;
+        background-color: brown;
+        float: left;
+    }
+
+    .navegador2{
+        width: 100%;
+        height: 100px;
+        background-color: forestgreen;
+        float: left;
+    }
+
+    .seccion{
+        width: 100%;
+        height: 200px;
+        background-color: chocolate;
+        float: left;
+    }
+    .articulo{
+        display: none;
+    }
+    .figura{
+        background-color: antiquewhite;
+        float: left;
+        width: 100%;
+        height: 250px;
+    }
+    
+    .figura > figure{
+        width: 50%;
+        height: 50px;
+        background-color: aqua;
+    }
+    
+    .figura > header{
+        width: 90%;
+        height: 50px;
+        background-color: darkgoldenrod;
+    }
+    
+    .figura > section{
+        width: 90%;
+        height: 150px;
+        background-color: darkorange;
+    }
+    
+    .figura2{
+        background-color: antiquewhite;
+        float: left;
+        width: 100%;
+        height: 250px;
+    }
+    
+    .figura2 > figure{
+        width: 50%;
+        height: 50px;
+        background-color: aqua;
+    }
+    
+    .figura2 > header{
+        width: 90%;
+        height: 50px;
+        background-color: sienna;
+    }
+    
+    .figura2 > section{
+        width: 90%;
+        height: 150px;
+        background-color: darkorange;
+    }
+
+    .pie{
+        background-color: yellow;
+        width: 100%;
+        height: 90px;
+        float: left;
+    }
+    
+    .pie > footer{
+        background-color: indianred;
+        width: 100%;
+        height: 90px;
+        float: left;
+    }
+    
+    .pie > aside{
+        background-color: yellowgreen;
+        width: 100%;
+        height: 90px;
+        float: left;
+    }
+}
+@media screen and (min-width: 601px) and (max-width: 1199px)
+{
+    .divPrincipal{
+        float: left;
+        width: 100%;
+        height: 100px;
+    }
+    .headerPrincipal{
+        width: 100%;
+        height: 100%;
+        background-color: bisque;
+    }
+    .navegadorPrincipal{
+        width: 50%;
+        height: 100px;
+        background-color: brown;
+        float: left;
+    }
+    .navegador2{
+        width: 50%;
+        height: 100px;
+        background-color: forestgreen;
+        float: left;
+    }
+    .seccion{
+        width: 50%;
+        height: 200px;
+        background-color: chocolate;
+        float: left;
+    }
+    .articulo{
+        width: 50%;
+        height: 200px;
+        background-color: darkgoldenrod;
+        float: left;
+    }
+    .figura{
+        background-color: antiquewhite;
+        float: left;
+        width: 50%;
+        height: 250px;
+    }
+    
+    .figura > figure{
+        width: 70%;
+        height: 50px;
+        background-color: aqua;
+    }
+    
+    .figura > header{
+        width: 90%;
+        height: 50px;
+        background-color: darkgoldenrod;
+    }
+    
+    .figura > section{
+        width: 90%;
+        height: 150px;
+        background-color: darkorange;
+    }
+    
+    .figura2{
+        background-color: antiquewhite;
+        float: left;
+        width: 50%;
+        height: 250px;
+    }
+    
+    .figura2 > figure{
+        width: 70%;
+        height: 50px;
+        background-color: aqua;
+    }
+    
+    .figura2 > header{
+        width: 90%;
+        height: 50px;
+        background-color: sienna;
+    }
+    
+    .figura2 > section{
+        width: 90%;
+        height: 150px;
+        background-color: darkorange;
+    }
+
+    .pie{
+        background-color: yellow;
+        width: 100%;
+        height: 90px;
+        float: left;
+    }
+    
+    .pie > footer{
+        background-color: indianred;
+        width: 30%;
+        height: 90px;
+        float: left;
+    }
+    
+    .pie > aside{
+        background-color: yellowgreen;
+        width: 70%;
+        height: 90px;
+        float: left;
+    }
 }
 
-.headerPrincipal{
-    width: 100%;
-    height: 100%;
-    background-color: bisque;
-}
-
-.navegadorPrincipal{
-    width: 30%;
-    height: 100px;
-    background-color: brown;
-    float: left;
-}
-
-.seccion{
-    width: 60%;
-    height: 200px;
-    background-color: chocolate;
-    float: left;
-}
-
-.navegador2{
-    width: 10%;
-    height: 200px;
-    background-color: forestgreen;
-    float: left;
-}
-
-.articulo{
-    width: 30%;
-    height: 200px;
-    background-color: darkgoldenrod;
-    float: left;
-}
-.figura{
-    float: left;
-    width: 40%;
-    height: 250px;
-    background-color: darkgreen;
-}
-
-.figura2{
-    float: left;
-    width: 30%;
-    height: 250px;
-    background-color: darkseagreen;
-}
-
-.figura3{
-    background-color: firebrick;
-}
-
-.pie{
-    background-color: yellow;
-    width: 100%;
-    height: 90px;
-    float: left;
-}
-
-.pie > footer{
-    background-color: indianred;
-    width: 30%;
-    height: 90px;
-    float: left;
-}
-
-.pie > aside{
-    background-color: yellowgreen;
-    width: 70%;
-    height: 90px;
-    float: left;
+@media screen and (min-width: 1200px) {
+    .divPrincipal{
+        float: left;
+        width: 70%;
+        height: 100px;
+    }
+    
+    .headerPrincipal{
+        width: 100%;
+        height: 100%;
+        background-color: bisque;
+    }
+    
+    .navegadorPrincipal{
+        width: 30%;
+        height: 100px;
+        background-color: brown;
+        float: left;
+    }
+    
+    .seccion{
+        width: 60%;
+        height: 200px;
+        background-color: chocolate;
+        float: left;
+    }
+    
+    .navegador2{
+        width: 10%;
+        height: 200px;
+        background-color: forestgreen;
+        float: left;
+    }
+    
+    .articulo{
+        width: 30%;
+        height: 200px;
+        background-color: darkgoldenrod;
+        float: left;
+    }
+    
+    .figura{
+        background-color: antiquewhite;
+        float: left;
+        width: 40%;
+        height: 250px;
+    }
+    
+    .figura > figure{
+        width: 70%;
+        height: 50px;
+        background-color: aqua;
+    }
+    
+    .figura > header{
+        width: 90%;
+        height: 50px;
+        background-color: darkgoldenrod;
+    }
+    
+    .figura > section{
+        width: 90%;
+        height: 150px;
+        background-color: darkorange;
+    }
+    
+    .figura2{
+        background-color: antiquewhite;
+        float: left;
+        width: 30%;
+        height: 250px;
+    }
+    
+    .figura2 > figure{
+        width: 70%;
+        height: 50px;
+        background-color: aqua;
+    }
+    
+    .figura2 > header{
+        width: 90%;
+        height: 50px;
+        background-color: sienna;
+    }
+    
+    .figura2 > section{
+        width: 90%;
+        height: 150px;
+        background-color: darkorange;
+    }
+    
+    .pie{
+        background-color: yellow;
+        width: 100%;
+        height: 90px;
+        float: left;
+    }
+    
+    .pie > footer{
+        background-color: indianred;
+        width: 30%;
+        height: 90px;
+        float: left;
+    }
+    
+    .pie > aside{
+        background-color: yellowgreen;
+        width: 70%;
+        height: 90px;
+        float: left;
+    }
 }
