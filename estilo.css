@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px)
+@media screen and (max-width: 700px)
 {
     .divPrincipal{
         float: left;
@@ -28,7 +28,7 @@
 
     .seccion{
         width: 100%;
-        height: 200px;
+        height: 300px;
         background-color: chocolate;
         float: left;
     }
@@ -39,7 +39,7 @@
         background-color: antiquewhite;
         float: left;
         width: 100%;
-        height: 250px;
+        height: 350px;
     }
     
     .figura > figure{
@@ -64,7 +64,7 @@
         background-color: antiquewhite;
         float: left;
         width: 100%;
-        height: 250px;
+        height: 350px;
     }
     
     .figura2 > figure{
@@ -106,7 +106,7 @@
         float: left;
     }
 }
-@media screen and (min-width: 601px) and (max-width: 1199px)
+@media screen and (min-width: 701px) and (max-width: 1199px)
 {
     .divPrincipal{
         float: left;
@@ -233,7 +233,7 @@
         background-color: brown;
         float: left;
     }
-    
+
     .seccion{
         width: 60%;
         height: 200px;

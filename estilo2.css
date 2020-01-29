@@ -1,0 +1,274 @@
+body{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 700px)
+{
+    .cabecera{
+        width: 100%;
+        height: 50px;
+    }
+
+    .cabecera > header{
+        height: 100%;
+        width: 100%;
+        background-color: brown;
+        float: left;
+    }
+
+    .cabecera > nav{
+        margin-top: 10px;
+        margin-right: 10px;
+        height: 100%;
+        width: 100%;
+        background-color: yellowgreen;
+        float: left;
+    }
+
+    .seccion{
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .seccion > nav{
+        margin-top: 10px;
+        margin-left: 0px;
+        height: 50px;
+        width: 100%;
+        background-color: darkorange;
+        float: left;
+    }
+
+    .seccion > section{
+        margin-top: 10px;
+        width: 100%;
+        height: 500px;
+        background-color: tomato;
+        float: left;
+    }
+
+    .seccion > article{
+        display: none;
+    }
+
+    .sistemaEmbebido{
+        padding-top: 10px;
+        width: 100%;
+        height: 400px;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+
+    .sistemaEmbebido > div{
+        margin-top: 10px;
+        margin-right: 10px;
+        width: 100%;
+        height: 100%;
+        background-color: sandybrown;
+        float: left;
+    }
+
+    .piePagina{
+        padding-top: 10px;
+        width: 100%;
+        height: 50px;
+        display: inline-block;
+    }
+
+    .piePagina > footer{
+        float: left;
+        width: 25%; 
+        height: 50px;
+        background-color: orangered;
+    }
+
+    .piePagina > aside{
+        float: left;
+        margin-left: 10px;
+        width: 60%;
+        height: 50px;
+        background-color: orange;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1199px)
+{
+    .cabecera{
+        width: 100%;
+        height: 50px;
+    }
+
+    .cabecera > header{
+        height: 100%;
+        width: 100%;
+        background-color: brown;
+        float: left;
+    }
+
+    .cabecera > nav{
+        margin-top: 10px;
+        margin-right: 10px;
+        height: 100%;
+        width: 50%;
+        background-color: yellowgreen;
+        float: left;
+    }
+
+    .seccion{
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .seccion > nav{
+        margin-left: 0px;
+        height: 50px;
+        width: 48%;
+        background-color: darkorange;
+        float: left;
+    }
+
+    .seccion > section{
+        margin-top: 10px;
+        width: 50%;
+        height: 500px;
+        background-color: tomato;
+        float: left;
+    }
+
+    .seccion > article{
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 47%;
+        height: 500px;
+        background-color: tan;
+        float: left;
+    }
+
+    .sistemaEmbebido{
+        padding-top: 10px;
+        width: 100%;
+        height: 400px;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+
+    .sistemaEmbebido > div{
+        margin-top: 10px;
+        margin-right: 10px;
+        width: 48%;
+        height: 100%;
+        background-color: sandybrown;
+        float: left;
+    }
+
+    .piePagina{
+        padding-top: 10px;
+        width: 100%;
+        height: 50px;
+        display: inline-block;
+    }
+
+    .piePagina > footer{
+        float: left;
+        width: 30%; 
+        height: 50px;
+        background-color: orangered;
+    }
+
+    .piePagina > aside{
+        float: left;
+        margin-left: 10px;
+        width: 68%;
+        height: 50px;
+        background-color: orange;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .cabecera{
+        width: 100%;
+        height: 50px;
+    }
+
+    .cabecera > header{
+        height: 100%;
+        width: 70%;
+        background-color: brown;
+        float: left;
+    }
+
+    .cabecera > nav{
+        margin-left: 10px;
+        height: 100%;
+        width: 28%;
+        background-color: yellowgreen;
+        float: left;
+    }
+
+    .seccion{
+        width: 100%;
+        margin-top: 10px;
+        height: 400px;
+    }
+
+    .seccion > nav{
+        height: 100%;
+        width: 10%;
+        background-color: darkorange;
+        float: left;
+    }
+
+    .seccion > section{
+        margin-left: 10px;
+        width: 60%;
+        height: 100%;
+        background-color: tomato;
+        float: left;
+    }
+
+    .seccion > article{
+        margin-left: 10px;
+        width: 27%;
+        height: 100%;
+        background-color: tan;
+        float: left;
+    }
+
+    .sistemaEmbebido{
+        padding-top: 10px;
+        width: 100%;
+        height: 300px;
+    }
+
+    .sistemaEmbebido > div{
+        margin-right: 10px;
+        width: 32%;
+        height: 100%;
+        background-color: sandybrown;
+        float: left;
+    }
+
+    .piePagina{
+        width: 100%;
+        padding-top: 10px;
+        height: 50px;
+    }
+
+    .piePagina > footer{
+        float: left;
+        width: 30%;
+        height: 100%;
+        background-color: orangered;
+    }
+
+    .piePagina > aside{
+        margin-left: 10px;
+        float: left;
+        width: 67%;
+        height: 100%;
+        background-color: orange;
+    }
+}
