@@ -4,38 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="estilo2.css" type="text/css">
+    <title>Número aleatorio</title>
+    <link rel="stylesheet" href="css/estiloNumeroAleatorio.css" type="text/css">
 </head>
 <body>
-    <div>
-        <div class="cabecera">
-            <header></header>
-            <nav></nav>
+    <div class="contenedorPadre">
+        <h1>JUEGO ADIVINA EL NÚMERO</h1>
+        <div>
+            <p>El juego selecciona un número de 1-100 donde el usuario trata de adivinar el número aleatorio en 6 intentos o menos. Se le indica al usuario si el número es mas mayor o menor que el número que selecciono el juego.</p>
         </div>
-        <div class="seccion">
-            <nav></nav>
-            <section></section>
-            <article></article>
+        <div class="seccionInserccion">
+            <p style="padding-right: 10px;">Adivina el número:
+                <input type="text" id="numeroInsertado" class="numeroInsertado">
+                <input type="button" value="Probar número" class="botonProbar">
+            </p>
         </div>
-        <div class="sistemaEmbebido">
-            <div>
-                <figure></figure>
-                <header></header>
-                <section></section>
-            </div>
-            <div>
-                <figure></figure>
-                <header></header>
-                <section></section>
-            </div>
-            <div>
-
-            </div>
-        </div>
-        <div class="piePagina">
-            <footer></footer>
-            <aside></aside>
+        <div class="seccionJuego">
+            <p>Intentos anteriores:</p>
+            <p class="arregloNumero" id="arregloNumero">12 5 48 65 32 95</p>
+            <p class="mensaje">¡Fallaste!</p>
+            <p class="descripcion">Cerca del número</p>
+            <input type="button" id="nuevoJuego" value="Volver a jugar" class="nuevoJuego">
         </div>
     </div>
 </body>
