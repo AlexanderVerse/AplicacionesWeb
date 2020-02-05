@@ -50,23 +50,16 @@ function jugar()
         numIntento += 1
         numeroIntento.innerHTML = "Intentos: " + numIntento
         band = false
-        arregloNumeroInsertado.push(numeroInsertadoEntero)
-        if(numIntento < 6)
+        for (let index = 0; index < arregloNumeroInsertado.length; index++)
         {
-            if(numeroInsertadoEntero > numAleatorio)
+            if(arregloNumeroInsertado[index] == numeroInsertadoEntero)
             {
-                descripcion.innerHTML = "Prueba con un número menor"
+                band = true
             }
-            else
-            {
-                descripcion.innerHTML = "Prueba con un número mayor"
-            }
-            mensaje.innerHTML = "! Fallaste ¡"
-            arregloNumero.innerHTML = arregloNumeroInsertado
-            numeroInsertado.focus()
         }
-        else
+        if(numIntento == 6)
         {
+            arregloNumeroInsertado.push(numeroInsertadoEntero)
             numeroInsertado.disabled = true
             botonProbar.disabled = true
             mensaje.innerHTML = "!GAME OVER¡"
@@ -74,6 +67,29 @@ function jugar()
             descripcion.innerHTML = "ACABAS DE PERDER"
             descripcion.style.backgroundColor = 'red'
             nuevoJuego.style.display = "block"
+        }
+        else
+        {
+            if(!band)
+            {
+                arregloNumeroInsertado.push(numeroInsertadoEntero)
+                if(numeroInsertadoEntero > numAleatorio)
+                {
+                    descripcion.innerHTML = "Prueba con un número menor"
+                }
+                else
+                {
+                    descripcion.innerHTML = "Prueba con un número mayor"
+                }
+                mensaje.innerHTML = "!Fallaste¡"
+                arregloNumero.innerHTML = arregloNumeroInsertado
+            }
+            else
+            {
+                mensaje.innerHTML = "!Advertencia¡"
+                descripcion.innerHTML = "Has repetido un número que ya se insertó"
+            }
+            numeroInsertado.focus()
         }
         mensaje.style.backgroundColor = 'red'
         numeroInsertado.value = ""
@@ -86,7 +102,7 @@ function jugar()
         mensaje.style.backgroundColor = '#7BBB6A'
         mensaje.innerHTML = "!ACERTASTE¡"
         descripcion.style.backgroundColor = '#7BBB6A'
-        descripcion.style.backgroundColor = 'white'
+        descripcion.style.color = 'white'
         descripcion.innerHTML = "-> ACABAS DE GANAR <-"
         nuevoJuego.style.display = "block"
     }

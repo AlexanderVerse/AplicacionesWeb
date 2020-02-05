@@ -80,7 +80,9 @@ p{
 }
 
 .descripcionGanador{
-
+    width: 70%;
+    background-color: #FFEC43;
+    color: black;
 }
 
 .nuevoJuego{
@@ -90,4 +92,8 @@ p{
     border-radius: 10px;
     background-color: #1A1822;
     color: white;   
+}
+
+.intentoCero{
+
 }
