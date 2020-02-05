@@ -60,14 +60,14 @@ p{
 }
 
 .mensaje{
-    width: 15%;
+    width: 25%;
     font-size: 25px;
     background-color:#7BBB6A;
     color: white;
 }
 
 .descripcion{
-    width: 30%;
+    width: 70%;
     background-color: #FFEC43;
 }
 
