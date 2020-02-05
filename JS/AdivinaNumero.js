@@ -108,7 +108,9 @@ function jugar()
     }
 }
 
+botonProbar.addEventListener('click', jugar)
+nuevoJuego.addEventListener('click', jugar)
+
 inicializarPagina();
-i = 0;
 numIntento = 0;
 arregloNumeroInsertado = []

@@ -43,6 +43,7 @@ p{
 .seccionJuego{
     width: 100%;
     float: left;
+    display: none;
 }
 
 .arregloNumero{
@@ -92,8 +93,4 @@ p{
     border-radius: 10px;
     background-color: #1A1822;
     color: white;   
-}
-
-.intentoCero{
-
 }
