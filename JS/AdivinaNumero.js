@@ -1,67 +1,59 @@
-function nuevojuego()
-{
-    console.log("sURRENDER")
-    numIntento = 0
-    numAleatorio = Math.round(Math.random()*100)
-    numAleatorio =  numAleatorio.toString()
-    nuevoJuego.style.display = "none"
-    botonProbar.disabled = false
-    document.getElementById("numeroInsertado").disabled = false
-    tituloIntento.style.display = "none"
-    arregloNumero.innerHTML = ""
-    descripcion.style.display = "none"
-    mensaje.style.display = "none"
-}
-
 function inicializarPagina()
 {
+    numeroInsertado = document.getElementById("numeroInsertado")
+    numeroInsertado.value = ""
+    numeroInsertado.focus()
+    botonProbar = document.getElementById("botonProbar")
+    numeroIntento = document.getElementById("numeroIntento")
+    numeroIntento.innerHTML = "Intentos: 0"
+    tituloIntento = document.getElementById("TituloIntento")
+    tituloIntento.innerHTML = "Números incorrectos insertados"
     arregloNumero = document.getElementById("arregloNumero")
     descripcion = document.getElementById("descripcion")
+    descripcion.style.backgroundColor = "yellow"
+    descripcion.style.color = "black"
     mensaje = document.getElementById("mensaje")
-    tituloIntento = document.getElementById("TituloIntento")
     nuevoJuego = document.getElementById("nuevoJuego")
-    numeroIntento = document.getElementById("numeroIntento")
-    botonProbar = document.getElementById("botonProbar")
-    arregloNumero.style.display = "none"
-    descripcion.style.display = "none"
-    mensaje.style.display = "none"
-    tituloIntento.style.display = "none"
-    nuevoJuego.style.display = "none"
-    numAleatorio = Math.round(Math.random()*100)
-    numAleatorio =  numAleatorio.toString()
+    nuevojuego()
 }
 
-inicializarPagina();
+function nuevojuego()
+{
+    numIntento = 0
+    numAleatorio = Math.round(Math.random()*100)
+    botonProbar.disabled = false
+    numeroInsertado.disabled = false
+    numeroIntento.innerHTML = "Intentos: 0"
+    numeroInsertado.focus()
+    tituloIntento.style.display = "none"
+    arregloNumero.style.display = "none"
+    arregloNumeroInsertado = []
+    descripcion.style.display = "none"
+    descripcion.style.backgroundColor = "#FFEC43"
+    descripcion.style.color = "black"
+    mensaje.style.display = "none"
+    nuevoJuego.style.display = "none"
+}
 
-numIntento = 0;
 function jugar()
 {
+    numeroInsertadoEntero = parseInt(numeroInsertado.value)
     if(numIntento == 0)
     {
+        tituloIntento.style.display = "block"
         arregloNumero.style.display = "block"
         descripcion.style.display = "block"
         mensaje.style.display = "block"
-        tituloIntento.style.display = "block"
-        tituloIntento.innerHTML = "Números incorrectos insertados"
     }
-    numeroInsertado = document.getElementById("numeroInsertado").value
-    numeroInsertadoTexto = document.createTextNode(" " + numeroInsertado);
-    if( numeroInsertado == numAleatorio)
-    {
-        descripcion.innerHTML = "Acertaste al número aleatorio"
-        descripcion.style.backgroundColor = '#7BBB6A'
-        mensaje.style.backgroundColor = '#7BBB6A'
-        mensaje.innerHTML = "!ACERTASTE¡"
-        document.getElementById("numeroInsertado").disabled = true
-        nuevoJuego.style.display = "block"
-        botonProbar.disabled = true
-    }
-    else
+    if( numeroInsertadoEntero != numAleatorio)
     {
         numIntento += 1
+        numeroIntento.innerHTML = "Intentos: " + numIntento
+        band = false
+        arregloNumeroInsertado.push(numeroInsertadoEntero)
         if(numIntento < 6)
         {
-            if(numeroInsertado > numAleatorio)
+            if(numeroInsertadoEntero > numAleatorio)
             {
                 descripcion.innerHTML = "Prueba con un número menor"
             }
@@ -69,22 +61,38 @@ function jugar()
             {
                 descripcion.innerHTML = "Prueba con un número mayor"
             }
-            descripcion.style.backgroundColor = "yellow"
-            descripcion.style.color = "black"
-            mensaje.style.backgroundColor = 'red'
             mensaje.innerHTML = "! Fallaste ¡"
-            arregloNumero.appendChild(numeroInsertadoTexto)
+            arregloNumero.innerHTML = arregloNumeroInsertado
+            numeroInsertado.focus()
         }
         else
         {
-            descripcion.style.color = "white"
-            descripcion.innerHTML = "PERDISTE EL JUEGO"
-            descripcion.style.backgroundColor = 'red'
-            mensaje.style.backgroundColor = 'red'
-            mensaje.innerHTML = "!GAME OVER¡"
-            document.getElementById("numeroInsertado").disabled = true
-            nuevoJuego.style.display = "block"
+            numeroInsertado.disabled = true
             botonProbar.disabled = true
+            mensaje.innerHTML = "!GAME OVER¡"
+            descripcion.style.color = "white"
+            descripcion.innerHTML = "ACABAS DE PERDER"
+            descripcion.style.backgroundColor = 'red'
+            nuevoJuego.style.display = "block"
         }
+        mensaje.style.backgroundColor = 'red'
+        numeroInsertado.value = ""
+    }
+    else
+    {
+        numeroInsertado.value = ""
+        numeroInsertado.disabled = true
+        botonProbar.disabled = true
+        mensaje.style.backgroundColor = '#7BBB6A'
+        mensaje.innerHTML = "!ACERTASTE¡"
+        descripcion.style.backgroundColor = '#7BBB6A'
+        descripcion.style.backgroundColor = 'white'
+        descripcion.innerHTML = "-> ACABAS DE GANAR <-"
+        nuevoJuego.style.display = "block"
     }
 }
+
+inicializarPagina();
+i = 0;
+numIntento = 0;
+arregloNumeroInsertado = []
