@@ -39,15 +39,16 @@
                 ctx.moveTo(0, 100*index);
                 ctx.lineTo(anchoTotal, 100*index)
             }
-
-
-            /*ctx.moveTo(anchoTotal/parseInt(valor.value), 0);
-            ctx.lineTo(anchoTotal/parseInt(valor.value), alturaTotal);
-            ctx.moveTo(anchoTotal/parseInt(valor.value)*2, alturaTotal)
-            ctx.lineTo(anchoTotal/parseInt(valor.value)*2, 0)
-            ctx.closePath(); // Cierra el trazo dibujando una línea recta desde el punto actual al punto inicial*/
-            /*closePath solo cierra la forma en contorno, no la rellena
-            fill cierra el trazado y lo rellena como si fuera una figura la que se esta mostrando con relleno*/
+            for (let x = 1; x <= 3; x++)
+            {
+                for (let index = 0; index < 3; index++)
+                {
+                    ctx.moveTo(10, index * 100 + 10)
+                    ctx.lineTo( 100 - 10 , ((index + 1) * 100) - 10 )
+                    ctx.moveTo(10, ((index + 1) * 100) - 10 )
+                    ctx.lineTo( 100 - 10, index * 100 + 10)
+                }           
+            }
             ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
         }
     </script>
