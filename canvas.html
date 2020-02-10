@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tutorial de canvas</title>
+    <link rel="stylesheet" href="css/gato.css" type="text/css">
+</head>
+<body>
+    <canvas width="500" height="800" id="canva">
+
+    </canvas>
+    <script>
+        var canvas = document.getElementById('canva');
+        ctx = canvas.getContext('2d');
+        ctx.lineWidth = 3;
+        ctx.beginPath(); // Crea un nuevo trazo para poder aplicar comando de dibujo
+        ctx.fillRect(100, 100, 200, 100) // Crea un relleno en forma de rectángulo
+        ctx.strokeRect(100, 300, 200, 100) // Crea solo el contorno de un rectángulo
+        ctx.clearRect(100, 600, 200, 100) //Hace un rectángulo limpiandolo de color
+        
+    </script>
+</body>
+</html>

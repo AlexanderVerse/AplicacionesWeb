@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/gato.css" type="text/css">
+    <title>Juego del gato</title>
+</head>
+<body>
+    <p>Introduce cuanto por cuanto: </p>
+    <input type="number" id="valor">
+    <input type="button" id="calcular" value="Calcular"><br>
+    <canvas id="gato">
+    </canvas>
+    <script>
+        canvas = document.getElementById('gato');
+        boton = document.getElementById("calcular")
+        valor = document.getElementById("valor")
+        boton.addEventListener('click', calcular)
+        function calcular()
+        {
+            anchoTotal = 100 * valor.value
+            alturaTotal = 100 * valor.value
+            canvas.setAttribute("width", anchoTotal.toString())
+            canvas.setAttribute("height", anchoTotal.toString())
+            ctx = canvas.getContext('2d');
+            ctx.lineWidth = 3;
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.beginPath(); // Crea un nuevo trazo para poder aplicar comando de dibujo
+            for (let index = 1; index < valor.value; index++)
+            {
+                ctx.moveTo(100*index, 0);
+                ctx.lineTo(100*index, alturaTotal)
+            }
+            ctx.moveTo(0, 0)
+            for (let index = 1; index < valor.value; index++)
+            {
+                ctx.moveTo(0, 100*index);
+                ctx.lineTo(anchoTotal, 100*index)
+            }
+
+
+            /*ctx.moveTo(anchoTotal/parseInt(valor.value), 0);
+            ctx.lineTo(anchoTotal/parseInt(valor.value), alturaTotal);
+            ctx.moveTo(anchoTotal/parseInt(valor.value)*2, alturaTotal)
+            ctx.lineTo(anchoTotal/parseInt(valor.value)*2, 0)
+            ctx.closePath(); // Cierra el trazo dibujando una línea recta desde el punto actual al punto inicial*/
+            /*closePath solo cierra la forma en contorno, no la rellena
+            fill cierra el trazado y lo rellena como si fuera una figura la que se esta mostrando con relleno*/
+            ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
+        }
+    </script>
+</body>
+</html>
