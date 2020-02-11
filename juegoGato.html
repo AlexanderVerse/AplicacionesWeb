@@ -8,49 +8,13 @@
     <title>Juego del gato</title>
 </head>
 <body>
-    <p>Introduce cuanto por cuanto: </p>
-    <input type="number" id="valor">
-    <input type="button" id="calcular" value="Calcular"><br>
-    <canvas id="gato">
-    </canvas>
-    <script>
-        canvas = document.getElementById('gato');
-        boton = document.getElementById("calcular")
-        valor = document.getElementById("valor")
-        boton.addEventListener('click', calcular)
-        function calcular()
-        {
-            anchoTotal = 100 * valor.value
-            alturaTotal = 100 * valor.value
-            canvas.setAttribute("width", anchoTotal.toString())
-            canvas.setAttribute("height", anchoTotal.toString())
-            ctx = canvas.getContext('2d');
-            ctx.lineWidth = 3;
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            ctx.beginPath(); // Crea un nuevo trazo para poder aplicar comando de dibujo
-            for (let index = 1; index < valor.value; index++)
-            {
-                ctx.moveTo(100*index, 0);
-                ctx.lineTo(100*index, alturaTotal)
-            }
-            ctx.moveTo(0, 0)
-            for (let index = 1; index < valor.value; index++)
-            {
-                ctx.moveTo(0, 100*index);
-                ctx.lineTo(anchoTotal, 100*index)
-            }
-            for (let x = 1; x <= 3; x++)
-            {
-                for (let index = 0; index < 3; index++)
-                {
-                    ctx.moveTo(10, index * 100 + 10)
-                    ctx.lineTo( 100 - 10 , ((index + 1) * 100) - 10 )
-                    ctx.moveTo(10, ((index + 1) * 100) - 10 )
-                    ctx.lineTo( 100 - 10, index * 100 + 10)
-                }           
-            }
-            ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
-        }
-    </script>
+    <div class="titulo"><h1>JUEGO GATO REMIX</h1></div>
+    <div style="text-align: center;"><canvas id="gato"></canvas></div>
+    <div class="control">
+        <p>Número de cuadrículas por lado:</p>
+        <input type="number" id="valor" class="numeroCuadricula">
+        <input type="button" id="calcular" value="Crear cuadrícula" class="calcular"><br>
+    </div>
+    <script src="JS/juegoGato.js"></script>
 </body>
 </html>

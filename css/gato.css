@@ -1,3 +1,30 @@
-canvas {
-    border: 1px solid black;
+body{
+    font-size: 20px;
+
+}
+.titulo
+{
+    text-align: center;
+}
+
+.control
+{
+    text-align: center;
+}
+
+.numeroCuadricula{
+    width: 50px;
+    font-size: 20px;
+}
+
+.calcular{
+    font-size: 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+canvas
+{
+    /*border: 1px solid black;*/
 }
