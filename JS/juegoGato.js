@@ -4,12 +4,19 @@ function inicializar()
     ctx = canvas.getContext('2d');
     boton = document.getElementById("calcular")
     dimensionGato = document.getElementById("valor")
+    nuevoJuego = document.getElementById("nuevoJuego")
+    //dibujoInicio = document.getElementsByName("caracterInicio").value
+    nuevoJuego.style.display = "none"
     turno = 1
+    finJuego= false
 }
 
 function hacerCuadricula()
 {
-    medidaCuadricula = 0
+    //turno = dibujoInicio.value
+    totalMovimiento = 0
+    finJuego= false
+    turno = 1 //Tal vez se tenga que quitar
     longitudLado = 100 * dimensionGato.value
     canvas.setAttribute("width", longitudLado.toString())
     canvas.setAttribute("height", longitudLado.toString())
@@ -41,11 +48,12 @@ function dibujarX(coordenada)
 {
     cuadranteX = Math.trunc(coordenada.x / 100)
     cuadranteY = Math.trunc(coordenada.y / 100)
-    if(arreglocuadricula[cuadranteX][cuadranteY] == -1)
+    if(arreglocuadricula[cuadranteY][cuadranteX] == -1)
     {
+        arreglocuadricula[cuadranteY][cuadranteX] = turno
+        totalMovimiento += 1
         turno = 0
         ctx.strokeStyle = '#D11B16'
-        arreglocuadricula[cuadranteX][cuadranteY] = turno
         ctx.beginPath();
         ctx.moveTo(10 + (100 * cuadranteX), cuadranteY * 100 + 10)
         ctx.lineTo(100 * (cuadranteX + 1) - 10, (cuadranteY + 1) * 100 - 10)
@@ -59,10 +67,11 @@ function dibujarO(coordenada)
 {
     cuadranteX = Math.trunc(coordenada.x / 100)
     cuadranteY = Math.trunc(coordenada.y / 100)
-    if(arreglocuadricula[cuadranteX][cuadranteY] == -1)
+    if(arreglocuadricula[cuadranteY][cuadranteX] == -1)
     {
+        arreglocuadricula[cuadranteY][cuadranteX] = turno
+        totalMovimiento += 1
         turno = 1
-        arreglocuadricula[cuadranteX][cuadranteY] = turno
         ctx.strokeStyle = '#54BE21'
         ctx.beginPath();
         ctx.arc(50 + (100 * cuadranteX), 50 + (100 * cuadranteY), 40, 2.13, 2.14, true)
@@ -75,7 +84,7 @@ inicializar()
 boton.addEventListener('click', hacerCuadricula)
 canvas.addEventListener('click', function(e)
 {
-    coordenada = oMousePos(canvas, e)
+    coordenada = posicionCursorCanva(canvas, e)
     if (turno == 1)
     {
         dibujarX(coordenada)
@@ -84,10 +93,102 @@ canvas.addEventListener('click', function(e)
     {
         dibujarO(coordenada)
     }
+    if (!finJuego)
+    {
+        estadoJuego()   
+    }
 })
 
-function oMousePos(canvas, evt)
+function estadoJuego()
+{
+    if(totalMovimiento >= dimensionGato.value * 2 - 1)
+    {
+        for (let x = 0; x < dimensionGato.value; x++)
+        {
+            for (let y = 0; y < dimensionGato.value; y++)
+            {
+                if(x == 0)
+                {
+                    caracterComprobar =  arreglocuadricula[dimensionGato.value - 1][0]
+                    caracterComprobar2 = arreglocuadricula[0][0]
+                    cantidadIgual = 1
+                    cantidadIgual2 = 1
+                    for (let z = 1; z < dimensionGato.value; z++)
+                    {
+                        if(arreglocuadricula[z][dimensionGato.value - z - 1] == caracterComprobar && caracterComprobar != -1)
+                        {
+                            cantidadIgual += 1
+                        }
+                        if(arreglocuadricula[z][z] == caracterComprobar2 && caracterComprobar != -1)
+                        {
+                            cantidadIgual2 += 1
+                        }
+                    }
+                    if (cantidadIgual == dimensionGato.value)
+                    {
+                        console.log("Primer entrada")
+                        finJuego = true
+                    }
+                    else if(cantidadIgual2 == dimensionGato.value)
+                    {
+                        console.log("Segunda entrada")
+                        finJuego = true
+                    }
+                    else
+                    {
+                        caracterComprobar2 = -1
+                        for (let i = 0; i < dimensionGato.value; i++)
+                        {
+                            caracterComprobar = arreglocuadricula[0][i]
+                            cantidadIgual = 1
+                            if (caracterComprobar != -1)
+                            {
+                                for (let j = 1; j < dimensionGato.value; j++)
+                                {
+                                    if(arreglocuadricula[j][i] != caracterComprobar)
+                                    {
+                                        break;
+                                    }
+                                    cantidadIgual += 1
+                                }
+                                console.log("iteracion: " + i + "  cantidadIgual: " + cantidadIgual)
+                                if(cantidadIgual == dimensionGato.value)
+                                {
+                                    console.log("Entre a este")
+                                    finJuego = true
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    if (finJuego)
+                    {
+                        boton.disabled = true
+                        dimensionGato.disabled = true
+                        nuevoJuego.style.display = "block"
+                        if (caracterComprobar == 1 || caracterComprobar2 == 1)
+                        {
+                            console.log("Ganaron las x")   
+                        }
+                        else
+                        {
+                            console.log("Ganaron las O")
+                        }
+                        x = dimensionGato.value
+                        y = dimensionGato.value   
+                    }
+                }
+                for (let z = 1; z < dimensionGato.value; z++)
+                {
+                    console.log("Omiso")
+                }
+            }    
+        }
+    }
+}
+
+function posicionCursorCanva(canvas, evt)
 {
   var ClientRect = canvas.getBoundingClientRect();
-    return{x: Math.round(evt.clientX - ClientRect.left), y: Math.round(evt.clientY - ClientRect.top)}
+  return{x: Math.round(evt.clientX - ClientRect.left), y: Math.round(evt.clientY - ClientRect.top)}
 }

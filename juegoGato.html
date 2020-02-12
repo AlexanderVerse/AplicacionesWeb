@@ -8,12 +8,18 @@
     <title>Juego del gato</title>
 </head>
 <body>
-    <div class="titulo"><h1>JUEGO GATO REMIX</h1></div>
+    <div class="titulo">JUEGO GATO</div>
     <div style="text-align: center;"><canvas id="gato"></canvas></div>
+    <input type="button" id="nuevoJuego" value="Volver a jugar" class="juegoNuevo">
     <div class="control">
-        Número de cuadrículas por lado:
+        Cuadrículas por lado:
         <input type="number" id="valor" class="numeroCuadricula">
-        <input type="button" id="calcular" value="Crear cuadrícula" class="calcular"><br>
+        <input type="button" id="calcular" value="Crear" class="calcular"><br>
+        Empezar con:
+        <input type="radio" name="caracterInicio" value="1">
+        <label for="X">X</label>
+        <input type="radio" name="caracterInicio" value="0">
+        <label for="O">0</label>
     </div>
     <script src="JS/juegoGato.js"></script>
 </body>
