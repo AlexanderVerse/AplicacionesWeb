@@ -151,10 +151,8 @@ function estadoJuego()
                                     }
                                     cantidadIgual += 1
                                 }
-                                console.log("iteracion: " + i + "  cantidadIgual: " + cantidadIgual)
                                 if(cantidadIgual == dimensionGato.value)
                                 {
-                                    console.log("Entre a este")
                                     finJuego = true
                                     break
                                 }
@@ -168,21 +166,46 @@ function estadoJuego()
                         nuevoJuego.style.display = "block"
                         if (caracterComprobar == 1 || caracterComprobar2 == 1)
                         {
-                            console.log("Ganaron las x")   
+                            console.log("Ganaron las x vertical")   
                         }
                         else
                         {
-                            console.log("Ganaron las O")
+                            console.log("Ganaron las O vertical")
                         }
                         x = dimensionGato.value
-                        y = dimensionGato.value   
+                        y = dimensionGato.value
                     }
                 }
-                for (let z = 1; z < dimensionGato.value; z++)
+                for (let i = 0; i < dimensionGato.value; i++)
                 {
-                    console.log("Omiso")
+                    caracterComprobar = arreglocuadricula[0][i]
+                    cantidadIgual = 1
+                    if(caracterComprobar != -1)
+                    {
+                        for (let j = 1; j < dimensionGato.value; j++)
+                        {
+                            if(arreglocuadricula[j][i] != caracterComprobar && arreglocuadricula == -1)
+                            {
+                                break
+                            }
+                            cantidadIgual += 1
+                        }
+                        if(cantidadIgual == dimensionGato.value)
+                        {
+                            if(caracterComprobar == 1)
+                            {
+                                console.log("Ganaron las x horizontal")
+                                finJuego = true
+                            }
+                            else
+                            {
+                                console.log("Ganaron las O horizontal")
+                            }
+                            break
+                        }
+                    }
                 }
-            }    
+            }
         }
     }
 }
