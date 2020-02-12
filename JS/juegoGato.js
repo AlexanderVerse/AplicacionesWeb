@@ -2,9 +2,9 @@ function inicializar()
 {
     canvas = document.getElementById('gato');
     ctx = canvas.getContext('2d');
-    ctx.lineWidth = 3;
     boton = document.getElementById("calcular")
     dimensionGato = document.getElementById("valor")
+    turno = 1
 }
 
 function hacerCuadricula()
@@ -14,48 +14,80 @@ function hacerCuadricula()
     canvas.setAttribute("width", longitudLado.toString())
     canvas.setAttribute("height", longitudLado.toString())
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.beginPath(); // Crea un nuevo trazo para poder aplicar comando de dibujo
+    ctx.strokeStyle = '#581845'
+    ctx.lineWidth = 5;
     for (let index = 1; index < dimensionGato.value; index++)
     {
+        ctx.beginPath(); // Crea un nuevo trazo para poder aplicar comando de dibujo
         ctx.moveTo(100*index, 0);
         ctx.lineTo(100*index, longitudLado)
         ctx.moveTo(0, 100*index);
         ctx.lineTo(longitudLado, 100*index)
+        ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazoctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
     }
-    ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazoctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
-    dibujarX()
-    //dibujarO()
-}
-
-function dibujarX(params)
-{
-    for (let i = 0; i < dimensionGato.value; i++)
+    arreglocuadricula = []
+    for (let x = 0; x < dimensionGato.value; x++)
     {
-        for (let j = 0; j < dimensionGato.value; j++)
+        arreglocuadricula.push(new Array(dimensionGato.value, dimensionGato.value))
+        for (let y = 0; y < dimensionGato.value; y++)
         {
-            ctx.moveTo(10 + (100 * i), j * 100 + 10)
-            ctx.lineTo(100 * (i + 1) - 10, (j + 1) * 100 - 10)
-            ctx.moveTo(100 * (i + 1) - 10, j * 100 +10)
-            ctx.lineTo(100 * i + 10, 100 * (j + 1) - 10)
+            arreglocuadricula[x][y] = -1
         }
     }
-    ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
+    ctx.lineWidth = 2;
 }
 
-function dibujarO(params)
+function dibujarX(coordenada)
 {
-    
-    for(let x = 0; x < dimensionGato.value; x++)
+    cuadranteX = Math.trunc(coordenada.x / 100)
+    cuadranteY = Math.trunc(coordenada.y / 100)
+    if(arreglocuadricula[cuadranteX][cuadranteY] == -1)
     {
-       for (let y = 0; y < dimensionGato.value; y++)
-       {
-            ctx.beginPath();
-            ctx.arc(50 + (100 * x), 50 + (100 * y), 40, 2.13, 2.14, true)
-            ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
-       }
+        turno = 0
+        ctx.strokeStyle = '#D11B16'
+        arreglocuadricula[cuadranteX][cuadranteY] = turno
+        ctx.beginPath();
+        ctx.moveTo(10 + (100 * cuadranteX), cuadranteY * 100 + 10)
+        ctx.lineTo(100 * (cuadranteX + 1) - 10, (cuadranteY + 1) * 100 - 10)
+        ctx.moveTo(100 * (cuadranteX + 1) - 10, cuadranteY * 100 +10)
+        ctx.lineTo(100 * cuadranteX + 10, 100 * (cuadranteY + 1) - 10)
+        ctx.stroke();
+    }
+}
+
+function dibujarO(coordenada)
+{
+    cuadranteX = Math.trunc(coordenada.x / 100)
+    cuadranteY = Math.trunc(coordenada.y / 100)
+    if(arreglocuadricula[cuadranteX][cuadranteY] == -1)
+    {
+        turno = 1
+        arreglocuadricula[cuadranteX][cuadranteY] = turno
+        ctx.strokeStyle = '#54BE21'
+        ctx.beginPath();
+        ctx.arc(50 + (100 * cuadranteX), 50 + (100 * cuadranteY), 40, 2.13, 2.14, true)
+        ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
     }
 }
 
 
 inicializar()
 boton.addEventListener('click', hacerCuadricula)
+canvas.addEventListener('click', function(e)
+{
+    coordenada = oMousePos(canvas, e)
+    if (turno == 1)
+    {
+        dibujarX(coordenada)
+    }
+    else
+    {
+        dibujarO(coordenada)
+    }
+})
+
+function oMousePos(canvas, evt)
+{
+  var ClientRect = canvas.getBoundingClientRect();
+    return{x: Math.round(evt.clientX - ClientRect.left), y: Math.round(evt.clientY - ClientRect.top)}
+}

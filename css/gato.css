@@ -1,6 +1,7 @@
 body{
     font-size: 20px;
-
+    background-color: #E4DFBA;
+    color: #581845;
 }
 .titulo
 {
@@ -15,6 +16,8 @@ body{
 .numeroCuadricula{
     width: 50px;
     font-size: 20px;
+    border-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .calcular{
@@ -24,7 +27,13 @@ body{
     padding: 5px;
 }
 
+.etiqueta
+{
+    
+}
+
 canvas
 {
+    
     /*border: 1px solid black;*/
 }
