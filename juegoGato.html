@@ -9,18 +9,21 @@
 </head>
 <body>
     <div class="titulo">JUEGO GATO</div>
-    <div style="text-align: center;"><canvas id="gato"></canvas></div>
     <div class="control">
-        Cuadrículas por lado:
+        <div id="letreroDimension" class="letreroDimension">Dimensión(n*n):</div>
         <input type="number" id="valor" class="numeroCuadricula">
         <input type="button" id="calcular" value="Crear" class="calcular">
-        <input type="button" id="nuevoJuego" value="Volver a jugar" class="nuevoJuego"><br>
-        Empezar con:
-        <input type="radio" name="caracterInicio" value="1">
-        <label for="X">X</label>
-        <input type="radio" name="caracterInicio" value="0">
-        <label for="O">0</label>
+        <input type="button" id="nuevoJuego" value="Volver a jugar" class="nuevoJuego">
+        <input type="button" id="reinicio" value="Reinicio" class="reinicio"><br>
+        <div id="primerJugador">
+            Empezar con:
+            <input type="radio" name="caracterInicio" value="1">
+            <label for="X">X</label>
+            <input type="radio" name="caracterInicio" value="0">
+            <label for="O">0</label>
+        </div>
     </div>
+    <div style="text-align: center;"><canvas id="gato"></canvas></div>
     <script src="JS/juegoGato.js"></script>
 </body>
 </html>

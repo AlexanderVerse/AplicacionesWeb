@@ -2,17 +2,26 @@ function inicializar()
 {
     canvas = document.getElementById('gato');
     ctx = canvas.getContext('2d');
+    letreroDimension = document.getElementById("letreroDimension")
     boton = document.getElementById("calcular")
     dimensionGato = document.getElementById("valor")
     nuevoJuego = document.getElementById("nuevoJuego")
     dibujoInicio = document.getElementsByName("caracterInicio")
+    primerJugador = document.getElementById("primerJugador")
+    reinicio = document.getElementById("reinicio")
+    reinicio.style.display = "none"
     nuevoJuego.style.display = "none"
     finJuego= false
 }
 
 function hacerCuadricula()
 {
-    //turno = dibujoInicio.value
+    letreroDimension.style.display = "none"
+    valor.style.display = "none"
+    boton.style.display = "none"
+    primerJugador.style.display = "none"
+    reinicio.style.display = "inline"
+    nuevoJuego.style.display = "inline"
     if(dibujoInicio[0].checked)
     {
         turno = 1
@@ -185,24 +194,20 @@ function trazarRecta(puntoInicialX, puntoInicialY, puntoFinalX, puntoFinalY)
 function juegoTerminado()
 {
     finJuego = true
-    boton.style.display = "none"
-    dimensionGato.disabled = true
+    reinicio.style.display = "none"
     nuevoJuego.style.display = "inline"
-    if (caracterComprobar == 1 || caracterComprobar2 == 1)
-    {
-        console.log("Ganaron las x")   
-    }
-    else
-    {
-        console.log("Ganaron las O")
-    }
 }
 
 nuevoJuego.addEventListener('click', function()
 {
-    nuevoJuego.style.display = "none"
-    dimensionGato.disabled = false
+    letreroDimension.style.display = "inline"
+    valor.style.display = "inline"
     boton.style.display = "inline"
+    primerJugador.style.display = "inline"
+    boton.style.display = "inline"
+    nuevoJuego.style.display = "none"
+    reinicio.style.display = "none"
+    dimensionGato.disabled = false
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     canvas.setAttribute("width", 100)
     canvas.setAttribute("height", 100)

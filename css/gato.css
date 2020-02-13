@@ -35,6 +35,13 @@ body{
     padding: 5px;
 }
 
+.reinicio{
+    font-size: 20px;
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 5px;
+}
+
 canvas
 {
     /*border: 1px solid black;*/
