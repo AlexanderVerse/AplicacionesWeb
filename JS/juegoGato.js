@@ -5,18 +5,24 @@ function inicializar()
     boton = document.getElementById("calcular")
     dimensionGato = document.getElementById("valor")
     nuevoJuego = document.getElementById("nuevoJuego")
-    //dibujoInicio = document.getElementsByName("caracterInicio").value
+    dibujoInicio = document.getElementsByName("caracterInicio")
     nuevoJuego.style.display = "none"
-    turno = 1
     finJuego= false
 }
 
 function hacerCuadricula()
 {
     //turno = dibujoInicio.value
+    if(dibujoInicio[0].checked)
+    {
+        turno = 1
+    }
+    else
+    {
+        turno = 0
+    }
     totalMovimiento = 0
     finJuego= false
-    turno = 1 //Tal vez se tenga que quitar
     longitudLado = 100 * dimensionGato.value
     canvas.setAttribute("width", longitudLado.toString())
     canvas.setAttribute("height", longitudLado.toString())
@@ -85,16 +91,16 @@ boton.addEventListener('click', hacerCuadricula)
 canvas.addEventListener('click', function(e)
 {
     coordenada = posicionCursorCanva(canvas, e)
-    if (turno == 1)
-    {
-        dibujarX(coordenada)
-    }
-    else
-    {
-        dibujarO(coordenada)
-    }
     if (!finJuego)
     {
+        if (turno == 1)
+        {
+            dibujarX(coordenada)
+        }
+        else
+        {
+            dibujarO(coordenada)
+        }
         estadoJuego()   
     }
 })
@@ -109,7 +115,7 @@ function estadoJuego()
         cantidadIgual2 = 1
         for (let z = 1; z < dimensionGato.value; z++)
         {
-            if(arreglocuadricula[z][dimensionGato.value - z - 1] == caracterComprobar && caracterComprobar != -1)
+            if(arreglocuadricula[dimensionGato.value - z - 1][z] == caracterComprobar && caracterComprobar != -1)
             {
                 cantidadIgual += 1
             }
@@ -120,89 +126,87 @@ function estadoJuego()
         }
         if (cantidadIgual == dimensionGato.value)
         {
-            console.log("Primer entrada")
             caracterComprobar2 = -1
-            finJuego = true
+            trazarRecta(0, 3, 3, 0)
+            juegoTerminado()
         }
         else if(cantidadIgual2 == dimensionGato.value)
         {
             caracterComprobar = -1
-            console.log("Segunda entrada")
-            finJuego = true
+            trazarRecta(0, 0, 3, 3)
+            juegoTerminado()
         }
         else
         {
-            caracterComprobar2 = -1
             for (let i = 0; i < dimensionGato.value; i++)
             {
                 caracterComprobar = arreglocuadricula[0][i]
+                caracterComprobar2 = arreglocuadricula[i][0]
                 cantidadIgual = 1
-                if (caracterComprobar != -1)
-                {
-                    for (let j = 1; j < dimensionGato.value; j++)
-                    {
-                        if(arreglocuadricula[j][i] != caracterComprobar)
-                        {
-                            break;
-                        }
-                        cantidadIgual += 1
-                    }
-                    if(cantidadIgual == dimensionGato.value)
-                    {
-                        finJuego = true
-                        break
-                    }
-                }
-            }
-        }
-        if(finJuego)
-        {
-            boton.disabled = true
-            dimensionGato.disabled = true
-            nuevoJuego.style.display = "block"
-            if (caracterComprobar == 1 || caracterComprobar2 == 1)
-            {
-                console.log("Ganaron las x")   
-            }
-            else
-            {
-                console.log("Ganaron las O")
-            }
-        }
-        for (let i = 0; i < dimensionGato.value; i++)
-        {
-            caracterComprobar = arreglocuadricula[i][0]
-            cantidadIgual = 1
-            if(caracterComprobar != -1)
-            {
+                cantidadIgual2 = 1
                 for (let j = 1; j < dimensionGato.value; j++)
                 {
-                    if(arreglocuadricula[i][j] != caracterComprobar)
+                    if(arreglocuadricula[j][i] == caracterComprobar && arreglocuadricula[j][i] != -1)
                     {
-                        break
+                        cantidadIgual += 1
                     }
-                    cantidadIgual += 1
+                    if(arreglocuadricula[i][j] == caracterComprobar2 && arreglocuadricula[i][j] != -1)
+                    {
+                        cantidadIgual2 += 1
+                    }   
                 }
                 if(cantidadIgual == dimensionGato.value)
                 {
-                    if(caracterComprobar == 1)
-                    {
-                        console.log("Ganaron las x horizontal")
-                    }
-                    else
-                    {
-                        console.log("Ganaron las O horizontal")
-                    }
-                    finJuego = true
-                    boton.disabled = true
-                    dimensionGato.disabled = true
-                    nuevoJuego.style.display = "block"
+                    trazarRecta(i, 0, i, 3)
+                    juegoTerminado()
+                    break
+                }
+                else if(cantidadIgual2 == dimensionGato.value)
+                {
+                    trazarRecta(0, i, 3, i)
+                    juegoTerminado()
                     break
                 }
             }
         }
     }
 }
+
+function trazarRecta(puntoInicialX, puntoInicialY, puntoFinalX, puntoFinalY)
+{
+    ctx.lineWidth = 5
+    ctx.strokeStyle = '#5D39E6'
+    ctx.beginPath()
+    ctx.moveTo(puntoInicialX * 100 + 50, puntoInicialY * 100 + 50)
+    ctx.lineTo(puntoFinalX * 100 + 50, puntoFinalY * 100 + 50)
+    ctx.stroke()
+}
+
+function juegoTerminado()
+{
+    finJuego = true
+    boton.style.display = "none"
+    dimensionGato.disabled = true
+    nuevoJuego.style.display = "inline"
+    if (caracterComprobar == 1 || caracterComprobar2 == 1)
+    {
+        console.log("Ganaron las x")   
+    }
+    else
+    {
+        console.log("Ganaron las O")
+    }
+}
+
+nuevoJuego.addEventListener('click', function()
+{
+    nuevoJuego.style.display = "none"
+    dimensionGato.disabled = false
+    boton.style.display = "inline"
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    canvas.setAttribute("width", 100)
+    canvas.setAttribute("height", 100)
+})
 
 function posicionCursorCanva(canvas, evt)
 {
