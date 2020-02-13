@@ -114,6 +114,36 @@ canvas.addEventListener('click', function(e)
     }
 })
 
+reinicio.addEventListener('click', function()
+{
+    totalMovimiento = 0
+    longitudLado = 100 * dimensionGato.value
+    canvas.setAttribute("width", longitudLado.toString())
+    canvas.setAttribute("height", longitudLado.toString())
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.strokeStyle = '#581845'
+    ctx.lineWidth = 5;
+    for (let index = 1; index < dimensionGato.value; index++)
+    {
+        ctx.beginPath(); // Crea un nuevo trazo para poder aplicar comando de dibujo
+        ctx.moveTo(100*index, 0);
+        ctx.lineTo(100*index, longitudLado)
+        ctx.moveTo(0, 100*index);
+        ctx.lineTo(longitudLado, 100*index)
+        ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazoctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
+    }
+    arreglocuadricula = []
+    for (let x = 0; x < dimensionGato.value; x++)
+    {
+        arreglocuadricula.push(new Array(dimensionGato.value, dimensionGato.value))
+        for (let y = 0; y < dimensionGato.value; y++)
+        {
+            arreglocuadricula[x][y] = -1
+        }
+    }
+    ctx.lineWidth = 2;
+})
+
 function estadoJuego()
 {
     if(totalMovimiento >= dimensionGato.value * 2 - 1)
