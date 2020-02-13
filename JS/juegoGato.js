@@ -103,107 +103,101 @@ function estadoJuego()
 {
     if(totalMovimiento >= dimensionGato.value * 2 - 1)
     {
-        for (let x = 0; x < dimensionGato.value; x++)
+        caracterComprobar =  arreglocuadricula[dimensionGato.value - 1][0]
+        caracterComprobar2 = arreglocuadricula[0][0]
+        cantidadIgual = 1
+        cantidadIgual2 = 1
+        for (let z = 1; z < dimensionGato.value; z++)
         {
-            for (let y = 0; y < dimensionGato.value; y++)
+            if(arreglocuadricula[z][dimensionGato.value - z - 1] == caracterComprobar && caracterComprobar != -1)
             {
-                if(x == 0)
+                cantidadIgual += 1
+            }
+            if(arreglocuadricula[z][z] == caracterComprobar2 && caracterComprobar2 != -1)
+            {
+                cantidadIgual2 += 1
+            }
+        }
+        if (cantidadIgual == dimensionGato.value)
+        {
+            console.log("Primer entrada")
+            caracterComprobar2 = -1
+            finJuego = true
+        }
+        else if(cantidadIgual2 == dimensionGato.value)
+        {
+            caracterComprobar = -1
+            console.log("Segunda entrada")
+            finJuego = true
+        }
+        else
+        {
+            caracterComprobar2 = -1
+            for (let i = 0; i < dimensionGato.value; i++)
+            {
+                caracterComprobar = arreglocuadricula[0][i]
+                cantidadIgual = 1
+                if (caracterComprobar != -1)
                 {
-                    caracterComprobar =  arreglocuadricula[dimensionGato.value - 1][0]
-                    caracterComprobar2 = arreglocuadricula[0][0]
-                    cantidadIgual = 1
-                    cantidadIgual2 = 1
-                    for (let z = 1; z < dimensionGato.value; z++)
+                    for (let j = 1; j < dimensionGato.value; j++)
                     {
-                        if(arreglocuadricula[z][dimensionGato.value - z - 1] == caracterComprobar && caracterComprobar != -1)
+                        if(arreglocuadricula[j][i] != caracterComprobar)
                         {
-                            cantidadIgual += 1
+                            break;
                         }
-                        if(arreglocuadricula[z][z] == caracterComprobar2 && caracterComprobar != -1)
-                        {
-                            cantidadIgual2 += 1
-                        }
+                        cantidadIgual += 1
                     }
-                    if (cantidadIgual == dimensionGato.value)
+                    if(cantidadIgual == dimensionGato.value)
                     {
-                        console.log("Primer entrada")
                         finJuego = true
+                        break
                     }
-                    else if(cantidadIgual2 == dimensionGato.value)
+                }
+            }
+        }
+        if(finJuego)
+        {
+            boton.disabled = true
+            dimensionGato.disabled = true
+            nuevoJuego.style.display = "block"
+            if (caracterComprobar == 1 || caracterComprobar2 == 1)
+            {
+                console.log("Ganaron las x")   
+            }
+            else
+            {
+                console.log("Ganaron las O")
+            }
+        }
+        for (let i = 0; i < dimensionGato.value; i++)
+        {
+            caracterComprobar = arreglocuadricula[i][0]
+            cantidadIgual = 1
+            if(caracterComprobar != -1)
+            {
+                for (let j = 1; j < dimensionGato.value; j++)
+                {
+                    if(arreglocuadricula[i][j] != caracterComprobar)
                     {
-                        console.log("Segunda entrada")
-                        finJuego = true
+                        break
+                    }
+                    cantidadIgual += 1
+                }
+                if(cantidadIgual == dimensionGato.value)
+                {
+                    if(caracterComprobar == 1)
+                    {
+                        console.log("Ganaron las x horizontal")
                     }
                     else
                     {
-                        caracterComprobar2 = -1
-                        for (let i = 0; i < dimensionGato.value; i++)
-                        {
-                            caracterComprobar = arreglocuadricula[0][i]
-                            cantidadIgual = 1
-                            if (caracterComprobar != -1)
-                            {
-                                for (let j = 1; j < dimensionGato.value; j++)
-                                {
-                                    if(arreglocuadricula[j][i] != caracterComprobar)
-                                    {
-                                        break;
-                                    }
-                                    cantidadIgual += 1
-                                }
-                                if(cantidadIgual == dimensionGato.value)
-                                {
-                                    finJuego = true
-                                    break
-                                }
-                            }
-                        }
+                        console.log("Ganaron las O horizontal")
                     }
-                    if (finJuego)
-                    {
-                        boton.disabled = true
-                        dimensionGato.disabled = true
-                        nuevoJuego.style.display = "block"
-                        if (caracterComprobar == 1 || caracterComprobar2 == 1)
-                        {
-                            console.log("Ganaron las x vertical")   
-                        }
-                        else
-                        {
-                            console.log("Ganaron las O vertical")
-                        }
-                        x = dimensionGato.value
-                        y = dimensionGato.value
-                    }
-                }
-                for (let i = 0; i < dimensionGato.value; i++)
-                {
-                    caracterComprobar = arreglocuadricula[0][i]
-                    cantidadIgual = 1
-                    if(caracterComprobar != -1)
-                    {
-                        for (let j = 1; j < dimensionGato.value; j++)
-                        {
-                            if(arreglocuadricula[j][i] != caracterComprobar && arreglocuadricula == -1)
-                            {
-                                break
-                            }
-                            cantidadIgual += 1
-                        }
-                        if(cantidadIgual == dimensionGato.value)
-                        {
-                            if(caracterComprobar == 1)
-                            {
-                                console.log("Ganaron las x horizontal")
-                                finJuego = true
-                            }
-                            else
-                            {
-                                console.log("Ganaron las O horizontal")
-                            }
-                            break
-                        }
-                    }
+                    finJuego = true
+                    boton.disabled = true
+                    dimensionGato.disabled = true
+                    nuevoJuego.style.display = "block"
+                    break
                 }
             }
         }
