@@ -6,9 +6,10 @@ function inicializar()
     boton = document.getElementById("calcular")
     dimensionGato = document.getElementById("valor")
     nuevoJuego = document.getElementById("nuevoJuego")
-    dibujoInicio = document.getElementsByName("caracterInicio")
     primerJugador = document.getElementById("primerJugador")
     reinicio = document.getElementById("reinicio")
+    score1 = document.getElementById("score1")
+    score2 = document.getElementById("score2")
     reinicio.style.display = "none"
     nuevoJuego.style.display = "none"
     finJuego= false
@@ -17,19 +18,22 @@ function inicializar()
 function hacerCuadricula()
 {
     letreroDimension.style.display = "none"
-    valor.style.display = "none"
+    dimensionGato.style.display = "none"
     boton.style.display = "none"
     primerJugador.style.display = "none"
-    reinicio.style.display = "inline"
-    nuevoJuego.style.display = "inline"
-    if(dibujoInicio[0].checked)
+    nombreJugador1 =  prompt("Nombre del jugador1: ")
+    while (true)
     {
-        turno = 1
+        turno = parseInt(prompt("Caracter del jugador 1[1=X | 0=O]: "))
+        if (turno === 0 || turno === 1)
+        {
+            break
+        }
     }
-    else
-    {
-        turno = 0
-    }
+    ganador = 1
+    nombreJugador2 = prompt("Nombre del jugador2: ")
+    juegoGanadoJugador1 = 0
+    juegoGanadoJugador2 = 0
     totalMovimiento = 0
     finJuego= false
     longitudLado = 100 * dimensionGato.value
@@ -110,12 +114,22 @@ canvas.addEventListener('click', function(e)
         {
             dibujarO(coordenada)
         }
-        estadoJuego()   
+        estadoJuego()
+        if (ganador === 1 && !finJuego)
+        {
+            ganador = 0
+        }
+        else
+        {
+            ganador = 1
+        }
     }
 })
 
 reinicio.addEventListener('click', function()
 {
+    score1.innerHTML = ""
+    score2.innerHTML = ""
     totalMovimiento = 0
     longitudLado = 100 * dimensionGato.value
     canvas.setAttribute("width", longitudLado.toString())
@@ -132,6 +146,8 @@ reinicio.addEventListener('click', function()
         ctx.lineTo(longitudLado, 100*index)
         ctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazoctx.stroke();//Dibuja el contorno de la forma, obligatorio para que aparezca el trazo
     }
+    ganador = 1
+    finJuego = false
     arreglocuadricula = []
     for (let x = 0; x < dimensionGato.value; x++)
     {
@@ -166,13 +182,29 @@ function estadoJuego()
         if (cantidadIgual == dimensionGato.value)
         {
             caracterComprobar2 = -1
-            trazarRecta(0, 3, 3, 0)
+            trazarRecta(0, dimensionGato.value - 1, dimensionGato.value - 1, 0)
+            if (ganador === 1)
+            {
+                juegoGanadoJugador1 += 1
+            }
+            else
+            {
+                juegoGanadoJugador2 += 1
+            }
             juegoTerminado()
         }
         else if(cantidadIgual2 == dimensionGato.value)
         {
             caracterComprobar = -1
-            trazarRecta(0, 0, 3, 3)
+            trazarRecta(0, 0, dimensionGato.value - 1, dimensionGato.value - 1)
+            if (ganador === 1)
+            {
+                juegoGanadoJugador1 += 1
+            }
+            else
+            {
+                juegoGanadoJugador2 += 1
+            }
             juegoTerminado()
         }
         else
@@ -196,13 +228,29 @@ function estadoJuego()
                 }
                 if(cantidadIgual == dimensionGato.value)
                 {
-                    trazarRecta(i, 0, i, 3)
+                    trazarRecta(i, 0, i, dimensionGato.value - 1)
+                    if (ganador === 1)
+                    {
+                        juegoGanadoJugador1 += 1
+                    }
+                    else
+                    {
+                        juegoGanadoJugador2 += 1
+                    }
                     juegoTerminado()
                     break
                 }
                 else if(cantidadIgual2 == dimensionGato.value)
                 {
-                    trazarRecta(0, i, 3, i)
+                    trazarRecta(0, i, dimensionGato.value - 1, i)
+                    if (ganador === 1)
+                    {
+                        juegoGanadoJugador1 += 1
+                    }
+                    else
+                    {
+                        juegoGanadoJugador2 += 1
+                    }
                     juegoTerminado()
                     break
                 }
@@ -223,21 +271,26 @@ function trazarRecta(puntoInicialX, puntoInicialY, puntoFinalX, puntoFinalY)
 
 function juegoTerminado()
 {
+    score1.innerHTML = "Jugador " + nombreJugador1 + ": " + juegoGanadoJugador1
+    score2.innerHTML = "Jugador " + nombreJugador2 + ": " + juegoGanadoJugador2
     finJuego = true
-    reinicio.style.display = "none"
+    reinicio.style.display = "inline"
     nuevoJuego.style.display = "inline"
 }
 
 nuevoJuego.addEventListener('click', function()
 {
     letreroDimension.style.display = "inline"
-    valor.style.display = "inline"
+    dimensionGato.style.display = "inline"
     boton.style.display = "inline"
     primerJugador.style.display = "inline"
     boton.style.display = "inline"
     nuevoJuego.style.display = "none"
     reinicio.style.display = "none"
     dimensionGato.disabled = false
+    juegoGanadoJugador1 = 0
+    juegoGanadoJugador2 = 0
+    score.innerHTML = ""
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     canvas.setAttribute("width", 100)
     canvas.setAttribute("height", 100)
