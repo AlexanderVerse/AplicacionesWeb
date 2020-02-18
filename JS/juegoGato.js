@@ -10,6 +10,7 @@ function inicializar()
     reinicio = document.getElementById("reinicio")
     score1 = document.getElementById("score1")
     score2 = document.getElementById("score2")
+    textoTurno = document.getElementById("turno")
     reinicio.style.display = "none"
     nuevoJuego.style.display = "none"
     finJuego= false
@@ -61,6 +62,7 @@ function hacerCuadricula()
         }
     }
     ctx.lineWidth = 2;
+    textoTurno.innerHTML =  "Turno de " + nombreJugador1
 }
 
 function dibujarX(coordenada)
@@ -123,6 +125,14 @@ canvas.addEventListener('click', function(e)
         {
             ganador = 1
         }
+        if (ganador === 1 && !finJuego)
+        {
+            textoTurno.innerHTML =  "Turno de " + nombreJugador1
+        }
+        else if (!finJuego)
+        {
+            textoTurno.innerHTML =  "Turno de " + nombreJugador2
+        }
     }
 })
 
@@ -130,6 +140,7 @@ reinicio.addEventListener('click', function()
 {
     score1.innerHTML = ""
     score2.innerHTML = ""
+    textoTurno.innerHTML = "Turno de " + nombreJugador1
     totalMovimiento = 0
     longitudLado = 100 * dimensionGato.value
     canvas.setAttribute("width", longitudLado.toString())
@@ -182,7 +193,7 @@ function estadoJuego()
         if (cantidadIgual == dimensionGato.value)
         {
             caracterComprobar2 = -1
-            trazarRecta(0, dimensionGato.value - 1, dimensionGato.value - 1, 0)
+            trazarRecta(0, dimensionGato.value * 100, dimensionGato.value * 100, 0)
             if (ganador === 1)
             {
                 juegoGanadoJugador1 += 1
@@ -196,7 +207,7 @@ function estadoJuego()
         else if(cantidadIgual2 == dimensionGato.value)
         {
             caracterComprobar = -1
-            trazarRecta(0, 0, dimensionGato.value - 1, dimensionGato.value - 1)
+            trazarRecta(0, 0, dimensionGato.value * 100, dimensionGato.value * 100)
             if (ganador === 1)
             {
                 juegoGanadoJugador1 += 1
@@ -228,7 +239,7 @@ function estadoJuego()
                 }
                 if(cantidadIgual == dimensionGato.value)
                 {
-                    trazarRecta(i, 0, i, dimensionGato.value - 1)
+                    trazarRecta(i * 100 + 50, 0, i * 100 + 50, dimensionGato.value * 100)
                     if (ganador === 1)
                     {
                         juegoGanadoJugador1 += 1
@@ -242,7 +253,7 @@ function estadoJuego()
                 }
                 else if(cantidadIgual2 == dimensionGato.value)
                 {
-                    trazarRecta(0, i, dimensionGato.value - 1, i)
+                    trazarRecta(0, i * 100 + 50, dimensionGato.value * 100, i * 100 + 50)
                     if (ganador === 1)
                     {
                         juegoGanadoJugador1 += 1
@@ -264,13 +275,14 @@ function trazarRecta(puntoInicialX, puntoInicialY, puntoFinalX, puntoFinalY)
     ctx.lineWidth = 5
     ctx.strokeStyle = '#5D39E6'
     ctx.beginPath()
-    ctx.moveTo(puntoInicialX * 100 + 50, puntoInicialY * 100 + 50)
-    ctx.lineTo(puntoFinalX * 100 + 50, puntoFinalY * 100 + 50)
+    ctx.moveTo(puntoInicialX, puntoInicialY)
+    ctx.lineTo(puntoFinalX, puntoFinalY)
     ctx.stroke()
 }
 
 function juegoTerminado()
 {
+    textoTurno.innerHTML = ""
     score1.innerHTML = "Jugador " + nombreJugador1 + ": " + juegoGanadoJugador1
     score2.innerHTML = "Jugador " + nombreJugador2 + ": " + juegoGanadoJugador2
     finJuego = true
@@ -290,7 +302,8 @@ nuevoJuego.addEventListener('click', function()
     dimensionGato.disabled = false
     juegoGanadoJugador1 = 0
     juegoGanadoJugador2 = 0
-    score.innerHTML = ""
+    score1.innerHTML = ""
+    score2.innerHTML = ""
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     canvas.setAttribute("width", 100)
     canvas.setAttribute("height", 100)
