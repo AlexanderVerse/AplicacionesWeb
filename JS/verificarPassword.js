@@ -47,7 +47,6 @@ verificarSeguridadPassword = () =>{
                 {
                     
                     colorBarraValidacion("yellow", 3)
-                    contrasena.focus()
                     contrasenaComparar.value = ""
                     contrasenaComparar.disabled = true
                     botonValidar.disabled = true
@@ -60,7 +59,6 @@ verificarSeguridadPassword = () =>{
                 botonValidar.disabled = true
                 contrasenaComparar.value = ""
                 contrasenaComparar.disabled = true
-                contrasena.focus()
                 texto.innerHTML = "La contraseña debe contener al menos " + totalNumero + " números y " + totalCaracter + " carácteres."
             }
         }
@@ -71,13 +69,15 @@ verificarSeguridadPassword = () =>{
             botonValidar.disabled = true
             contrasenaComparar.value = ""
             contrasenaComparar.disabled = true
-            contrasena.focus()
             texto.innerHTML = "La contraseña debe contener al menos " + totalMinuscula + " minúsculas, " + totalNumero + " números y " + totalCaracter + " carácteres."
         }
     }
     else
     {
-        inicializar
+        colorBarraValidacion("white", 0)
+        botonValidar.disabled = true
+        contrasenaComparar.value = ""
+        contrasenaComparar.disabled = true
         texto.innerHTML = "La contraseña debe contener al menos " + totalMayuscula + " mayúsculas, " + totalMinuscula + " minúsculas, " + totalNumero + " números y " + totalCaracter + " carácteres."
     }
 }
