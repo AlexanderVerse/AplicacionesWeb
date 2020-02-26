@@ -7,15 +7,39 @@
 </head>
 <body>
     <h1>Ejercicio de listBox</h1>
-    <select name="estado" id="estado">
-        <option value=""></option>
-    </select>
-    <select name="ciudad" id="ciudad">
-        <option value=""></option>
-    </select>
-    <select name="cine" id="cine">
-        <option value=""></option>
-    </select>
+    <div style="width: 100%; height: 20px;">
+        <select name="estado" id="estado">
+            <option value=""></option>
+        </select>
+        <select name="ciudad" id="ciudad">
+            <option value=""></option>
+        </select>
+        <select name="cine" id="cine">
+            <option value=""></option>
+        </select>
+    </div>
+    <h2>Compra de boletos</h2>
+    <div style="width: 100%;" id="formulario">
+        <form>
+            <div style="float: left; width: 100%;">
+                <select name="pelicula" id="pelicula"></select>
+            </div>
+            <div>
+                <label for="adulto" id="adulto">Adultos $50</label>
+                <input type="number" id="adultoInput">
+            </div>
+            <div>
+                <label for="nino" id="nino">Niños $35</label>
+                <input type="number" id="ninoInput">
+            </div>
+            <div>
+                <label for="subtotal"></label>
+                <label for="iva"></label>
+                <label for="total"></label>
+            </div>
+            <input type="submit" value="Comprar boletos" id="comprarBoleto">
+        </form>
+    </div>
     <script src="JS/listBoxDinamico.js"></script>
 </body>
 </html>
