@@ -2,7 +2,7 @@ var validacionRojo = document.getElementById("validacionRojo")
 var validacionAnaranjado = document.getElementById("validacionAnaranjado")
 var validacionAmarillo = document.getElementById("validacionAmarillo")
 var validacionVerde = document.getElementById("validacionVerde")
-var botonValidar = document.getElementById("validar")
+//var botonValidar = document.getElementById("validar")
 var contrasenaComparar = document.getElementById("contrasenaComparar")
 var contrasena = document.getElementById("contrasena")
 var texto = document.getElementById("texto")
@@ -21,7 +21,7 @@ inicializar = () => {
     contrasena.focus()
     contrasenaComparar.disabled = true
     contrasenaComparar.value = ""
-    botonValidar.disabled = true
+    //botonValidar.disabled = true
 }
 
 verificarSeguridadPassword = () =>{
@@ -31,7 +31,7 @@ verificarSeguridadPassword = () =>{
     {
         console.log("Verificada")
         colorBarraValidacion(bloquesColor)
-        botonValidar.disabled = false
+        //botonValidar.disabled = false
         contrasenaComparar.disabled = false
         texto.innerHTML = "La contraseña es valida"
     }
@@ -61,7 +61,7 @@ verificarSeguridadPassword = () =>{
         contrasenaComparar.value = ""
         contrasenaComparar.disabled = true
         texto.innerHTML = "La contraseña debe contener al menos :" + mensajePassword
-        botonValidar.disabled = true
+        //botonValidar.disabled = true
     }
 }
 
@@ -121,5 +121,5 @@ validarPassword = () =>
 
 
 contrasena.addEventListener('input', verificarSeguridadPassword)
-botonValidar.addEventListener('click', validarPassword)
+//botonValidar.addEventListener('click', validarPassword)
 inicializar()
