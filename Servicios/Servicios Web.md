@@ -41,9 +41,45 @@ SSH usa hashes para verificar la autenticidad de los mensajes. Esto se realiza m
 Opera en el puerto 22 por defecto, aunque este puede ser modificado, en el servidor
 El cliente asegura una conexión simétrica segura presentando las credenciales adecuadas. Hay dos etapas en la autenticación: primero determinan que tipo de encriptación es y las credenciales son las mismas. El servidor presenta los protocolos de encriptación y sus respectivas versiones, si el cliente tiene similar las versiones se llega a un acuerdo e inicia la conexión. El servidor usa una clave pública asimétrica que cada cliente puede usar para verificar la autenticación del servidor remoto. Pasado ambos crean una llave simétrica. Este algoritmo lleva al cliente y al servidor lleguen a una clave de cifrado compartida que se usa para encriptar toda la información.
 
+# PostgreSQL
+Sistema de gestión de base de datos de código abierto relacional. Usa extensiones del lenguaje SQL combinado con muchas características que almacenan y escalan de manera mas rápida y segura.   
+Tiene una reputación que provee arquitectura, integración de datos, conjunto de características robustaz, extensibilidad y dedicación al código abierto.
+Viene con grandes características que ayudan a los desarrolladores creando aplicaciones, administradores protegiendo la integridad de datos y desarrollando entornos de trabajo tolerantes, y ayudando a manejar los datos ya sean pocos o muchos el conjunto de datos ademas de ser gratis y código abierto.   
+Muchas de las características requeridas por SQL standard son soportadas, mientras que algunas veces con algunas diferencias de sintaxis o funciones.
 
+Características:
+```
+> Tipo de datos
+- Primitivas: Entero, Cadena, boolean
+- Estructurado: Fecha, tiempo, arreglo, rango.
+- Documento: JSON, XML.
+- Geometry: Point, Line, Círculo, polígono
 
+> Integridad de datos
+- Llaves primarias
+- Llaves foraneas
 
+> Concurrencia y perfomance
+- Indexación: Multicolumna, expresiones.
+- Transaciones
+- Multi-versión control concurrencia.
+- Tabla de particiones.
+- Todas las transacciones niveles definidos en SQL standard incluyendo serialiable.
+
+> Seguridad
+- Autenticación
+- Robuzto acceso control al sistema
+- Columna y fila de seguridad
+- Multifactor de autenticación con certificados y un método adicional
+
+> Extensibilidad
+- Almacenamiento de funciones y procedimientos
+- Lenguajes de procedimientos: PL/SQL, Perl, Python
+- SQL/JSON expresiones path
+- Conexiones a otras base de datos con la interfaz standard de SQL
+```
+
+PostgreSQL es altamente extensible, demasiadas características, como los index, tienen definidas APIS con las cuales puedes desarrollar y solventar tus retos. Es escalable, manejo de datos grandes y la concurrencia de varios usuarios. Todo esto se hace a travéz de los clusters PostgreSQL.
 ### Bibliografias
 https://searchsecurity.techtarget.com/definition/Secure-Shell
 https://www.cups.org/doc/network.html
