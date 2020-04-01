@@ -89,6 +89,14 @@ Apache Software existe para proporcionar implementaciones de referencia robustas
 Utilizado ampliamente por grandes empresas, pequeñas empresas, instituciones de investigación, escuelas, individuos, en el entorno de la intranet, en todas partes, a pesar de que esto puede significar que las empresas podrían pagar el software comercial y pagarían sin parpadear, podría obtener un "viaje gratis" usando Apache. Incluso nos complace que algunas compañías de software comercial abandonen por completo sus propios planes de desarrollo de servidores HTTP y usen Apache como base, con las atribuciones adecuadas como se describe en la LICENCIA. Es decir, el Apache HTTP Sever solo proviene de Apache Software Foundation, pero muchos proveedores envían su propio producto "basado en Apache {Project}". No hay "{Vendor} Apache {Product}", esto es un abuso de las marcas de Apache Software Foundation.
 
 
+# PHP(Preprocesor Hypertext)
+Lenguaje interpretado cual su función principal es crear páginas web con HTML. La creación de estas páginas son idénticas como un archivo con extensión HTML a diferencia que se le añaden etiquetas y se le cambia la extensión a __php__
+Este lenguaje corre en el servidor. Una de las cualidades mas conocida es el envío de información desde el cliente al servidor a travéz de **POST** o **GET**, conexión con el servidor, conexión con la base de datos y consultas en el.
+No solo esta echo para cumplir la función de ser añadido a una página web también cumple con lo siguiente:
+- Se pueden hacer aplicaciones de escritorio aunque debe usarse una extensión que no es originaria de PHP sino que es de terceros.
+- Se puede descargar y ejecutar en la línea de comandos para poder crear scripts
+Su versión mas actual es la 7 indicando nueva sintaxis.
+
 ### Bibliografias
 https://searchsecurity.techtarget.com/definition/Secure-Shell
 https://www.cups.org/doc/network.html
